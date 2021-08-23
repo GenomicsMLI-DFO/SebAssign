@@ -1,4 +1,6 @@
 # Ignore everything in this directory
-*
+*.xls
+*.xlsx
+
 # Except this file
 !.gitignore
