@@ -22,6 +22,7 @@ library(dplyr)
 library(tidyr)
 library(here)
 library(magrittr)
+library(stringr)
 
 if(!require(klaR)){ install.packages("klaR") }
 library(klaR)
@@ -40,10 +41,15 @@ locus <- c("SEB25", "SEB31", "SEB33", "SEB9")
 
 assign.excel <- "TEL15_Coh16_BIN-MUX1-ASSIG_final_2019.xlsx"
 
-# Prepare Genetic Data ----------------------------------------------------
+# Check if these parameters are OK
+# Name of the folder where results will be saved
+assign.dir   <- file.path(here::here(), "02_Data_to_Assign", assign.excel %>% stringr::str_remove(".xlsx|.xls"))
+assign.dir
 
 assign.file  <- assign.excel %>% stringr::str_replace(".xlsx|.xls", ".gen")
-assign.dir   <- assign.excel %>% stringr::str_remove(".xlsx|.xls")
+assign.file
+
+# Prepare Genetic Data ----------------------------------------------------
 
 # Step 1 : Excel to Dataframe format
 
@@ -67,84 +73,16 @@ ref.gen    <- assignPOP::read.Genepop(file.path(here::here(), "01_Ref_Genotypes"
 
 assign.gen <- assignPOP::read.Genepop(file.path(here::here(), "02_Data_to_Assign", assign.file), pop.names="POP1", haploid = FALSE)
 
-# Evaluate baseline -------------------------------------------------------
-
-# remove low variance loci
-
-#ref.gen.rd <- reduce.allele(ref.gen, p = 0.95)
-
-# NOTE: it is not necessary to run this part each time ...
-
-# Compute cross-validation statistics
-
-# Make a directory
-dir.create(ref.dir)
-
-
-# Population assignment test using Monte-Carlo cross-validation
-
-#"lda", "svm", "naiveBayes", "tree", and "randomForest"
-
-assign.MC(ref.gen, train.inds=c(0.5, 0.7, 0.9), train.loci=c(0.75, 1),
-           loci.sample="fst", iterations=100, model="svm", dir=paste0(file.path(ref.dir,"MC_cross-validation_svm"),"/"))
-
-assign.MC(ref.gen, train.inds=c(0.5, 0.7, 0.9), train.loci=c(0.75, 1),
-          loci.sample="fst", iterations=100, model="naiveBayes", dir=paste0(file.path(ref.dir,"MC_cross-validation_naiveBayes"),"/"))
-
-assign.MC(ref.gen, train.inds=c(0.5, 0.7, 0.9), train.loci=c(0.75, 1),
-          loci.sample="fst", iterations=100, model="tree", dir=paste0(file.path(ref.dir,"MC_cross-validation_tree"),"/"))
-
-assign.MC(ref.gen, train.inds=c(0.5, 0.7, 0.9), train.loci=c(0.75, 1),
-          loci.sample="fst", iterations=100, model="randomForest", dir=paste0(file.path(ref.dir,"MC_cross-validation_randomForest"),"/"))
-
-
-accuMC.svm <- accuracy.MC(dir = paste0(file.path(ref.dir,"MC_cross-validation_svm"),"/"))
-accuMC.naiveBayes <- accuracy.MC(dir = paste0(file.path(ref.dir,"MC_cross-validation_naiveBayes"),"/"))
-accuMC.tree <- accuracy.MC(dir = paste0(file.path(ref.dir,"MC_cross-validation_tree"),"/"))
-accuMC.randomForest <- accuracy.MC(dir = paste0(file.path(ref.dir,"MC_cross-validation_randomForest"),"/"))
-
-accuracy.plot(accuMC.svm, pop = c("all", "pop.1", "pop.2")) +
-   geom_hline(yintercept = 0.9, lty = "dashed", col = "red") +
-   geom_hline(yintercept = 0.95, lty = "dashed", col = "blue") +
-   ylim(0.5, 1) +
-   ggtitle("SVM")
-
-accuracy.plot(accuMC.naiveBayes, pop = c("all", "pop.1", "pop.2")) +
-   geom_hline(yintercept = 0.9, lty = "dashed", col = "red") +
-   geom_hline(yintercept = 0.95, lty = "dashed", col = "blue") +
-   ylim(0.5, 1) +
-   ggtitle("naiveBayes")
-   
-accuracy.plot(accuMC.tree, pop = c("all", "pop.1", "pop.2")) +
-   geom_hline(yintercept = 0.9, lty = "dashed", col = "red") +
-   geom_hline(yintercept = 0.95, lty = "dashed", col = "blue") +
-   ylim(0.5, 1) +
-   ggtitle("tree")
-
-accuracy.plot(accuMC.randomForest, pop = c("all", "pop.1", "pop.2")) +
-   geom_hline(yintercept = 0.9, lty = "dashed", col = "red") +
-   geom_hline(yintercept = 0.95, lty = "dashed", col = "blue") +
-   ylim(0.5, 1) +
-   ggtitle("randomForest")
-
-# Population assignment test using K-fold cross-validation
-
-assign.kfold(ref.gen, k.fold=c(3, 4, 5), train.loci=c(1), 
-             loci.sample="random", model="naiveBayes", dir=paste0(file.path(ref.dir,"kfold_cross-validation"),"/"))
-
-accuKF <- accuracy.kfold(dir = paste0(file.path(ref.dir,"kfold_cross-validation"),"/"))
-
-accuracy.plot(accuKF, pop = c("all", "pop.1", "pop.2")) +
-   geom_hline(yintercept = 0.9, lty = "dashed", col = "red") +
-   geom_hline(yintercept = 0.96, lty = "dashed", col = "blue") +
-   ylim(0.6, 1) +
-   ggtitle("naiveBayes")
-
 
 # Predict sources of unknown individuals ----------------------------------
 
 # Make a directory
-dir.create(assign.dir)
+if(file.exists(assign.dir)){
+   cat("\nThe folder:", assign.dir, "already exist, nothing was done (be careful to not overwrite previous data)\n")
+} else {
+  cat("\nThe folder:", assign.dir, "was created")
+   dir.create(assign.dir) 
+}
 
 # 1.Perform assignment test using genetic data and naive Bayes
 assign.X( x1=ref.gen, x2=assign.gen, dir=paste0(file.path(assign.dir,"naiveBayes"),"/"), model="naiveBayes", mplot = T)
