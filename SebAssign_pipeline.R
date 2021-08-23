@@ -1,31 +1,32 @@
 # Info --------------------------------------------------------------------
 
-# Perform assignment with assignPOP
+# Pipeline developed to provide species diagnostic for Sebastes mentella 
+# and S. fasciatus, using 4 microsatelittes loci 
 # 
 # Write by: Audrey Bourret
-# 2019-10-15
 #
 
-# See https://alexkychen.github.io/assignPOP/index.html
+# See https://alexkychen.github.io/assignPOP/index.html for more information
+# on the assignPOP package
 
 # Library -----------------------------------------------------------------
 
-# POPassign - ** Attention R >= 3.6.0 **
-if(!require(assignPOP)){ install.packages("assignPOP") }
+# install.packages(c("assignPOP", "readxl", "dplyr", "here", "magrittr", "tidyr", "stringr"))
+
+# POPassign 
 library(assignPOP)
+
+# Tools to play around files
+library(readxl)
+library(dplyr)
+library(tidyr)
+library(here)
+library(magrittr)
 
 if(!require(klaR)){ install.packages("klaR") }
 library(klaR)
 
-# readxl convert read gen data
-if(!require(readxl)){ install.packages("readxl") }
-library(readxl)
-
-#tidyverse to play around xl filesconvert read gen data
-if(!require(tidyverse)){ install.packages("tidyverse") }
-library(tidyverse)
-
-# Internal functions
+# Load internal functions
 for(i in 1:length( list.files("./04_Functions") )){
   source(file.path("./04_Functions",  list.files("./04_Functions")[i]))  
 }
@@ -37,54 +38,34 @@ for(i in 1:length( list.files("./04_Functions") )){
 
 locus <- c("SEB25", "SEB31", "SEB33", "SEB9")
 
-#ref.excel <- "STD_Assignation_men-Fasc_3130_EP_14052019.xlsx" # Vieilles séquences références
-ref.excel <- "RAD2019_4groupes_sebastes.xlsx" # Séquences références validées avec les données RAD
-
 assign.excel <- "TEL15_Coh16_BIN-MUX1-ASSIG_final_2019.xlsx"
-
-# Nothing to change here
-ref.file  <- ref.excel %>% str_replace(".xlsx", ".gen") %>% str_replace(".xls", ".gen")
-ref.dir   <- file.path("01_Ref_Genotypes" ,ref.excel %>% str_remove(".xlsx") %>% str_remove(".xls"))
-
-assign.file  <- assign.excel %>% str_replace(".xlsx", ".gen") %>% str_replace(".xls", ".gen")
-assign.dir   <- file.path("03_Results" ,assign.excel %>% str_remove(".xlsx") %>% str_remove(".xls"))
 
 # Prepare Genetic Data ----------------------------------------------------
 
+assign.file  <- assign.excel %>% stringr::str_replace(".xlsx|.xls", ".gen")
+assign.dir   <- assign.excel %>% stringr::str_remove(".xlsx|.xls")
+
 # Step 1 : Excel to Dataframe format
-ref.geno <- as.data.frame(read_excel(file.path("01_Ref_Genotypes",ref.excel),  col_types = rep("text", 2 + length(locus) * 2)))
 
-# Keep only 2 populations
-ref.geno <- ref.geno %>% filter(POP %in% c("fasciatus", "mentella_golf"))
-
-ref.df <- merge.MSAT.alleles(data=ref.geno, locus=locus, na="NA")
-ref.df
-
+assign.geno <- as.data.frame(readxl::read_excel(file.path(here::here(), "02_Data_to_Assign", assign.excel),  col_types = rep("text", 2 + length(locus) * 2)))
+assign.geno <- assign.geno %>% tidyr::drop_na()
 
 # Step 2 : Merge alleles
-assign.geno <- as.data.frame(read_excel(file.path("02_Data_to_Assign",assign.excel),  col_types = rep("text", 2 + length(locus) * 2)))
-
-assign.geno <- assign.geno %>% drop_na()
-
 assign.df <- merge.MSAT.alleles(data=assign.geno, locus=locus, na="NA")
 assign.df
 
 # Step 3: Save as genpop
-write.genpop(fn = file.path("01_Ref_Genotypes", ref.file), 
-             data = ref.df, 
-             pop = "POP", 
-             ind = "ID",
-             locus = locus)
 
-write.genpop(fn = file.path("02_Data_to_Assign",assign.file), 
+write.genpop(fn = file.path(here::here(), "02_Data_to_Assign", assign.file), 
              data = assign.df, 
              ind = "ID",
              locus = locus)
 
-# Step 4: Upload in the rigth format
+# Step 4: Upload in the right format
 
-ref.gen    <- read.Genepop( file.path("01_Ref_Genotypes",ref.file), pop.names=unique(ref.df$SP), haploid = FALSE)
-assign.gen <- read.Genepop( file.path("02_Data_to_Assign",assign.file), pop.names="POP1", haploid = FALSE)
+ref.gen    <- assignPOP::read.Genepop(file.path(here::here(), "01_Ref_Genotypes", "Ref_Mentella_Fasciatus.gen"), pop.names= c("fasciatus", "mentella_golf"), haploid = FALSE)
+
+assign.gen <- assignPOP::read.Genepop(file.path(here::here(), "02_Data_to_Assign", assign.file), pop.names="POP1", haploid = FALSE)
 
 # Evaluate baseline -------------------------------------------------------
 
