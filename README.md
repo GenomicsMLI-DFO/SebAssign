@@ -2,7 +2,7 @@
 
 Pipeline developed to provide species diagnostic for *Sebastes mentella* and *S. fasciatus* from four microsatellite loci
 
-This pipeline was developed in 2018 around the `assignPOP` R package (Chen et al. 2018) which perform genetic assignment using machine learning algorithm. The ultimate goal was to ease the genetic identification for stock management of these species. 
+This pipeline was developed in 2019 around the `assignPOP` R package (Chen et al. 2018) which perform genetic assignment using machine learning algorithm. The ultimate goal was to ease the genetic identification for stock management of these species. 
 
 ## How to install SebAssign
 
@@ -12,12 +12,12 @@ This pipeline was developed in 2018 around the `assignPOP` R package (Chen et al
 
 `https://github.com/GenomicsMLI-DFO/SebAssign`
 
-3. Install the depending R package : `assignPOP` , `readxl` , `dplyr` , `here`, `magrittr`, `tidyr`, `stringr`
+3. Install the depending R package : `assignPOP` , `readxl` , `dplyr` , `here`, `magrittr`, `tidyr`, `stringr`, `ggplot2`
 
 This can be done with this command line in R :
 
 ```{r}
-install.packages(c("assignPOP", "readxl", "dplyr", "here", "magrittr", "tidyr", "stringr"))
+install.packages(c("assignPOP", "readxl", "dplyr", "here", "magrittr", "tidyr", "stringr", "ggplot2"))
 ```
 
 ## How to use it
@@ -43,7 +43,13 @@ Reference samples are in the file Ref_Mentella_Fasciatus.gen. They are composed 
 
 This file can be updated if necessary from an excel file (similar to the one describe above) with the function *Update_ref*.
 
-Theses reference samples were validated HOW
+Theses reference samples were tested under five different machine-learning algorithm (LDA, Naive Bayes, Random Forest, SVM and Decision tree) using MCMC cross-validation tests (training set : 0.5, 0.7 or 0.9 of all reference samples, 100 iterations). Both the Naive Bayes and the SVM model showed best results. 
+
+![fig1](/02_Ref_Genotypes/Ref_validation_MCMC.png)
+
+ADD SOMETHING ABOUT TABLE 1
+
+The code to perform these analysis can be find here: /01_Ref_Genotypes/SebAssign_ValidateReferences.R
 
 ## References
 
