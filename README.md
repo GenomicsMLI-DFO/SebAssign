@@ -43,13 +43,13 @@ Reference samples are in the file Ref_Mentella_Fasciatus.gen. They are composed 
 
 This file can be updated if necessary from an excel file (similar to the one describe above) with the function *Update_ref*.
 
-Theses reference samples were tested under five different machine-learning algorithm (LDA, Naive Bayes, Random Forest, SVM and Decision tree) using MCMC cross-validation tests (training set : 0.5, 0.7 or 0.9 of all reference samples, 100 iterations). Both the Naive Bayes and the SVM model showed best results. 
+Theses reference samples were tested under five different machine-learning algorithm (LDA, Naive Bayes, Random Forest, SVM and Decision tree) using MCMC cross-validation tests (training set : 0.5, 0.7 or 0.9 of all reference samples, 100 iterations). Both the Naive Bayes and the SVM model showed best results, and **Naive Bayes** was choose to perform genetic assignment of samples from unknown species.  
 
 ![fig1](/01_Ref_Genotypes/Ref_validation_MCMC.png)
 
 ADD SOMETHING ABOUT TABLE 1
 
-The code to perform these analysis can be find here: /01_Ref_Genotypes/SebAssign_ValidateReferences.R
+The code to perform these analysis can be find here: **/01_Ref_Genotypes/SebAssign_ValidateReferences.R**
 
 ## References
 
