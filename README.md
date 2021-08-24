@@ -1,8 +1,8 @@
 # SebAssign
 
-Pipeline developed to provide species diagnostic for *Sebastes mentella* and S. fasciatus from four microsatellite loci
+Pipeline developed to provide species diagnostic for *Sebastes mentella* and *S. fasciatus* from four microsatellite loci
 
-This pipeline was developed in 2018 around the `assignPOP` R package (Chen et al. 2018) which perferm genetic assignment using machine learning algorithm.
+This pipeline was developed in 2018 around the `assignPOP` R package (Chen et al. 2018) which perform genetic assignment using machine learning algorithm. The ultimate goal was to ease the genetic identification for stock management of these species. 
 
 ## How to install SebAssign
 
@@ -13,6 +13,8 @@ This pipeline was developed in 2018 around the `assignPOP` R package (Chen et al
 `https://github.com/GenomicsMLI-DFO/SebAssign`
 
 3. Install the depending R package : `assignPOP` , `readxl` , `dplyr` , `here`, `magrittr`, `tidyr`, `stringr`
+
+This can be done with this command line in R :
 
 ```{r}
 install.packages(c("assignPOP", "readxl", "dplyr", "here", "magrittr", "tidyr", "stringr"))
@@ -37,7 +39,7 @@ In all cases, make sure that allele character length is always 3 (if it's not th
 
 ## About the reference samples
 
-Reference samples are in the file Ref_Mentella_Fasciatus.gen. They are composed of 100 fasciatus and 81 mentella gulf identified as pure genotype from RADseq redfish dataset (Nesmestan et al. 2020), and genotyped at 4 microsatellite loci ("SEB25", "SEB31", "SEB33", "SEB9", Roques et al. 1999).
+Reference samples are in the file Ref_Mentella_Fasciatus.gen. They are composed of 100 fasciatus and 81 mentella gulf identified as pure genotype from RADseq redfish dataset (Nesmestan et al. 2020), and genotyped at 4 microsatellite loci (*SEB9*, *SEB25*, *SEB31*, *SEB33*; Roques et al. 1999).
 
 This file can be updated if necessary from an excel file (similar to the one describe above) with the function *Update_ref*.
 
