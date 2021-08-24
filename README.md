@@ -45,7 +45,7 @@ This file can be updated if necessary from an excel file (similar to the one des
 
 Theses reference samples were tested under five different machine-learning algorithm (LDA, Naive Bayes, Random Forest, SVM and Decision tree) using MCMC cross-validation tests (training set : 0.5, 0.7 or 0.9 of all reference samples, 100 iterations). Both the Naive Bayes and the SVM model showed best results. 
 
-![fig1](/02_Ref_Genotypes/Ref_validation_MCMC.png)
+![fig1](/01_Ref_Genotypes/Ref_validation_MCMC.png)
 
 ADD SOMETHING ABOUT TABLE 1
 
