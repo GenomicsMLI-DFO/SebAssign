@@ -1,0 +1,2 @@
+MeanDecreaseGini
+V1 43.7684444444444

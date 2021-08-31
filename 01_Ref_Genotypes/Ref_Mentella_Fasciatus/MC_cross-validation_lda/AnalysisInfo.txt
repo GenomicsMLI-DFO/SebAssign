@@ -1,0 +1,20 @@
+ Analysis Description ( R - assignPOP ver. 1.2.2 )
+ Perform assign.MC() @ 2021-08-24 12:08:29 
+
+ train.inds = 0.5 0.7 0.9 
+ train.loci = 0.75 1 
+ iterations = 100 
+ Total assignment tests = 600 
+ Fst locus sample method: fst 
+ Data scaled and centerd: FALSE 
+ PC retaining criteria: kaiser-guttman 
+ PCA for non-genetic data: NA 
+ Machine learning model: lda 
+
+ Input Data ( genetics )
+ Number of individuals: 181 
+ Number of loci: 4 
+ Number of non-genetic variables: 0 
+ Number of populations: 2 
+ fasciatus mentella_golf 
+ 100 81 
