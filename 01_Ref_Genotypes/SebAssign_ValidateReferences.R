@@ -193,6 +193,6 @@ table.1
 # Print in md
 
 library(knitr)
-table1.md <- kable(table.1, format = "markdown")
+table1.html <- kable(table.1, format = "html")
 
-cat(table1.md, file = file.path(here::here(), "01_Ref_Genotypes", "Ref_Mentella_Fasciatus", "Table1.md"))
+cat(table1.html, file = file.path(here::here(), "01_Ref_Genotypes", "Ref_Mentella_Fasciatus", "Table1.html"))

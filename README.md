@@ -49,7 +49,7 @@ Theses reference samples were tested under five different machine-learning algor
 
 From MCMC cross-validation results using Naive Bayes model, we tested the impact of increasing the membership probability threshold (from 50% to 95%) on the assignment rates.  
 
-[table1](/01_Ref_Genotypes/Ref_Mentella_Fasciatus/Table1.md)
+[table1](/01_Ref_Genotypes/Ref_Mentella_Fasciatus/Table1.html)
 
 The code to perform these analysis can be find here: **/01_Ref_Genotypes/SebAssign_ValidateReferences.R**
 
