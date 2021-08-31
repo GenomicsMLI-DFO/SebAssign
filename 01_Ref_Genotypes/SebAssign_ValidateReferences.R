@@ -144,3 +144,54 @@ accuracy.plot(accuKF, pop = c("all", "pop.1", "pop.2")) +
   ylim(0.6, 1) +
   ggtitle("naiveBayes")
 
+
+
+# Table 1 -----------------------------------------------------------------
+
+
+res.files <- list.files(file.path(here::here(), "01_Ref_Genotypes", "Ref_Mentella_Fasciatus", "MC_cross-validation_naiveBayes"), pattern = "Out_0.._1", full.names = T)
+#res.files <- list.files(file.path(here::here(), "01_Ref_Genotypes", "Ref_Mentella_Fasciatus", "kfold_cross-validation"), pattern = "Out_1", full.names = T)
+
+res <- data.frame()
+
+for(x in res.files){
+ 
+  int <- read.delim(res.files[1], sep="")
+ 
+  res <- bind_rows(res, int)
+  
+}
+
+head(res)
+n.tests <- nrow(res)
+
+res <- res %>% mutate(pred.pop.50 = ifelse(between(pop.1, 0.5, 0.5), "undetermined", pred.pop),
+               pred.pop.55 = ifelse(between(pop.1, 0.45, 0.55), "undetermined", pred.pop),
+               pred.pop.60 = ifelse(between(pop.1, 0.40, 0.60), "undetermined", pred.pop),
+               pred.pop.65 = ifelse(between(pop.1, 0.35, 0.65), "undetermined", pred.pop),
+               pred.pop.70 = ifelse(between(pop.1, 0.30, 0.70), "undetermined", pred.pop),
+               pred.pop.75 = ifelse(between(pop.1, 0.25, 0.75), "undetermined", pred.pop),
+               pred.pop.80 = ifelse(between(pop.1, 0.20, 0.80), "undetermined", pred.pop),
+               pred.pop.85 = ifelse(between(pop.1, 0.15, 0.85), "undetermined", pred.pop),
+               pred.pop.90 = ifelse(between(pop.1, 0.10, 0.90), "undetermined", pred.pop),
+               pred.pop.95 = ifelse(between(pop.1, 0.05, 0.95), "undetermined", pred.pop)) 
+
+res <- res %>% select(-c("pred.pop", "pop.1", "pop.2")) %>% 
+  pivot_longer(cols = names(.) %>% str_subset("Ind.ID|origin.pop", negate = T),
+               names_to = "threshold",
+               values_to = "pred.pop")
+table.1 <- res %>% mutate(Test = ifelse(origin.pop == pred.pop, "TRUE", "FALSE"),
+               Assigned = ifelse(pred.pop %in% c("pop.1", "pop.2"), "assigned", pred.pop)) %>% 
+        group_by(threshold, Assigned, Test) %>% summarise(N = n()) %>% 
+        mutate(Group = ifelse(Assigned == "assigned", Test, Assigned),
+               threshold = str_remove(threshold, "pred.pop.")) %>% 
+        group_by(threshold, Group) %>% summarise(N = sum(N)/n.tests) %>% 
+        pivot_wider(names_from = Group, values_from = N, values_fill = 0) 
+
+table.1
+
+# Print in 
+library(xtable)
+
+out_table_x <- xtable(table.1, digits = 2)
+print(out_table_x, type='html')
