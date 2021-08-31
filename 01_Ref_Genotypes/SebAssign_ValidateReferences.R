@@ -190,8 +190,9 @@ table.1 <- res %>% mutate(Test = ifelse(origin.pop == pred.pop, "TRUE", "FALSE")
 
 table.1
 
-# Print in 
-library(xtable)
+# Print in md
 
-out_table_x <- xtable(table.1, digits = 2)
-print(out_table_x, type='html')
+library(knitr)
+table1.md <- kable(table.1, format = "markdown")
+
+cat(table1.md, file = file.path(here::here(), "01_Ref_Genotypes", "Ref_Mentella_Fasciatus", "Table1.md"))
