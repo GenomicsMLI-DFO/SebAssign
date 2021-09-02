@@ -30,8 +30,8 @@ library(ggplot2)
 #library(klaR)
 
 # Load internal functions
-for(i in 1:length( list.files("./04_Functions") )){
-  source(file.path("./04_Functions",  list.files("./04_Functions")[i]))  
+for(i in 1:length( list.files("./03_Functions") )){
+  source(file.path("./03_Functions",  list.files("./03_Functions")[i]))  
 }
 
 
