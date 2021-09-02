@@ -1,0 +1,18 @@
+ Analysis Description ( R - assignPOP ver. 1.2.2 )
+ Perform assign.X() @ 2021-09-02 10:28:33 
+
+ Data scaled and centerd: FALSE 
+ PC retaining criteria: kaiser-guttman 
+ PCA for non-genetic data: NA 
+ Machine learning model: naiveBayes 
+
+ Input Data ( genetics )
+ Number of known individuals: 181 
+ Number of known populations 2 
+ fasciatus mentella_golf 
+ 100 81 
+
+ Number of unknown individuals: 122 
+ Number of unknown individuals assigned to populations:
+ fasciatus mentella_golf 
+ 56 66 

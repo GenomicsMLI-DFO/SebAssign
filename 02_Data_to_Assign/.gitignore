@@ -1,4 +1,8 @@
 # Ignore everything in this directory
 *
+
 # Except this file
 !.gitignore
+!RAD2019_sebastes_Test/*
+!RAD2019_sebastes_Test/naiveBayes/*
+!RAD2019_sebastes_Test*
