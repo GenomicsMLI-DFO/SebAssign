@@ -1,6 +1,6 @@
 # Info --------------------------------------------------------------------
 
-# Pipeline developed to provide species diagnostic for Sebastes mentella 
+# Pipeline developed to provide species assignement for Sebastes mentella 
 # and S. fasciatus, using 4 microsatelittes loci 
 # 
 # THIS SPECIFIC PART ALLOW TO TEST THE REFERENCE SAMPLES
@@ -150,7 +150,6 @@ accuracy.plot(accuKF, pop = c("all", "pop.1", "pop.2")) +
 
 
 res.files <- list.files(file.path(here::here(), "01_Ref_Genotypes", "Ref_Mentella_Fasciatus", "MC_cross-validation_naiveBayes"), pattern = "Out_0.._1", full.names = T)
-#res.files <- list.files(file.path(here::here(), "01_Ref_Genotypes", "Ref_Mentella_Fasciatus", "kfold_cross-validation"), pattern = "Out_1", full.names = T)
 
 res <- data.frame()
 
@@ -193,6 +192,7 @@ table.1
 # Print in md
 
 library(knitr)
-table1.html <- kable(table.1, format = "html")
+
+table1.html <- knitr::kable(table.1, digits = 3, format = "html")
 
 cat(table1.html, file = file.path(here::here(), "01_Ref_Genotypes", "Ref_Mentella_Fasciatus", "Table1.html"))

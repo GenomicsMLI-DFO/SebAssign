@@ -49,7 +49,78 @@ Theses reference samples were tested under five different machine-learning algor
 
 From MCMC cross-validation results using Naive Bayes model, we tested the impact of increasing the membership probability threshold (from 50% to 95%) on the assignment rates.  
 
-[table1](/01_Ref_Genotypes/Ref_Mentella_Fasciatus/Table1.html)
+<table>
+ <thead>
+  <tr>
+   <th style="text-align:left;"> threshold </th>
+   <th style="text-align:right;"> FALSE </th>
+   <th style="text-align:right;"> TRUE </th>
+   <th style="text-align:right;"> undetermined </th>
+  </tr>
+ </thead>
+<tbody>
+  <tr>
+   <td style="text-align:left;"> 50 </td>
+   <td style="text-align:right;"> 0.077 </td>
+   <td style="text-align:right;"> 0.923 </td>
+   <td style="text-align:right;"> 0.000 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> 55 </td>
+   <td style="text-align:right;"> 0.066 </td>
+   <td style="text-align:right;"> 0.901 </td>
+   <td style="text-align:right;"> 0.033 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> 60 </td>
+   <td style="text-align:right;"> 0.055 </td>
+   <td style="text-align:right;"> 0.879 </td>
+   <td style="text-align:right;"> 0.066 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> 65 </td>
+   <td style="text-align:right;"> 0.055 </td>
+   <td style="text-align:right;"> 0.868 </td>
+   <td style="text-align:right;"> 0.077 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> 70 </td>
+   <td style="text-align:right;"> 0.055 </td>
+   <td style="text-align:right;"> 0.868 </td>
+   <td style="text-align:right;"> 0.077 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> 75 </td>
+   <td style="text-align:right;"> 0.055 </td>
+   <td style="text-align:right;"> 0.868 </td>
+   <td style="text-align:right;"> 0.077 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> 80 </td>
+   <td style="text-align:right;"> 0.044 </td>
+   <td style="text-align:right;"> 0.857 </td>
+   <td style="text-align:right;"> 0.099 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> 85 </td>
+   <td style="text-align:right;"> 0.033 </td>
+   <td style="text-align:right;"> 0.824 </td>
+   <td style="text-align:right;"> 0.143 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> 90 </td>
+   <td style="text-align:right;"> 0.022 </td>
+   <td style="text-align:right;"> 0.813 </td>
+   <td style="text-align:right;"> 0.165 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> 95 </td>
+   <td style="text-align:right;"> 0.011 </td>
+   <td style="text-align:right;"> 0.747 </td>
+   <td style="text-align:right;"> 0.242 </td>
+  </tr>
+</tbody>
+</table>
 
 The code to perform these analysis can be find here: **/01_Ref_Genotypes/SebAssign_ValidateReferences.R**
 
