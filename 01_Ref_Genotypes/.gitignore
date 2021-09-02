@@ -1,6 +1,5 @@
 # Ignore everything in this directory
-*.xls
-*.xlsx
+RAD2019_4groupes_sebastes_COMPLET.xlsx
 
 # Except this file
 !.gitignore
