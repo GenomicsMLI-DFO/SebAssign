@@ -48,7 +48,7 @@ Reference samples are in the file **Ref_Mentella_Fasciatus.gen**. They are compo
 
 This file can be updated if necessary from an excel file (similar to the one describe above) with the function *Update_ref*.
 
-Theses reference samples were tested under five different machine-learning algorithm (LDA, Naive Bayes, Random Forest, SVM and Decision tree) using MCMC cross-validation tests (training set : 0.5, 0.7 or 0.9 of all reference samples, 100 iterations). Both the Naive Bayes and the SVM model showed best results, and **Naive Bayes** was choose to perform genetic assignment of samples from unknown species.  
+Theses reference samples were tested under five different machine-learning algorithm (LDA, Naive Bayes, Random Forest, SVM and Decision tree) using MCMC cross-validation tests (training set : 0.5, 0.7 or 0.9 of all reference samples, 100 iterations). Both the Naive Bayes and the SVM model showed best results, and **Naive Bayes** was chosen to perform genetic assignment of samples from unknown species.  
 
 ![fig1](/01_Ref_Genotypes/Ref_validation_MCMC.png)
 
@@ -131,7 +131,7 @@ The code to perform these analysis can be find here: **/01_Ref_Genotypes/SebAssi
 
 ## References
 
-Benestan, L., Rougemont, Q., Senay, C., Normandeau, E., Parent, E., Rideout, R., Bernatchez, L., Lambert, Y., Audet, C., and Parent, G.J. 2020. Population genomics and history of speciation reveal fishery management gaps in two related redfish species (*Sebastes mentella* and *Sebastes fasciatus*). Evol. Appl. https://doi.org/10.1111/eva.13143
+Benestan, L., Rougemont, Q., Senay, C., Normandeau, E., Parent, E., Rideout, R., Bernatchez, L., Lambert, Y., Audet, C., and Parent, G.J. 2021. Population genomics and history of speciation reveal fishery management gaps in two related redfish species (*Sebastes mentella* and *Sebastes fasciatus*). Evol. Appl. https://doi.org/10.1111/eva.13143
 
 Chen, K.-Y., Marschall, E.A., Sovic, M.G., Fries, A.C., Gibbs, H.L., and Ludsin, S.A. 2018. assignPOP: An R package for population assignment using genetic, non-genetic, or integrated data in a machine-learning framework. Methods Ecol. Evol. 9, 439-446.
 
