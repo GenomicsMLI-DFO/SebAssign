@@ -4,6 +4,9 @@ Pipeline developed to provide species assignment for *Sebastes mentella* and *S.
 
 This pipeline was developed in 2019, and make use of the `assignPOP` R package (Chen et al. 2018) alowing users to perform genetic assignment using diverse machine learning algorithms. The ultimate goal of this pipeline was to ease and standardise the genetic identification for stock management of these species. 
 
+Version 0.1.0 can be uploaded [here](https://github.com/GenomicsMLI-DFO/SebAssign/releases/tag/v0.1.0)
+Development version can be uploaded directly using the **Code** green buttom above!
+
 ## How to install SebAssign
 
 1. Install R and Rstudio
