@@ -3,7 +3,7 @@
 # Pipeline developed to provide species assignment for Sebastes mentella 
 # and S. fasciatus, using 4 microsatelittes loci 
 # 
-# Write by: Audrey Bourret
+# Written by: Audrey Bourret
 #
 
 # See https://alexkychen.github.io/assignPOP/index.html for more information
