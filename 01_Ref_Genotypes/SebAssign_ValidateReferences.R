@@ -6,7 +6,7 @@
 # THIS SPECIFIC PART ALLOW TO TEST THE REFERENCE SAMPLES
 # It only need to be run one time
 #
-# Write by: Audrey Bourret
+# Writen by: Audrey Bourret
 #
 # See https://alexkychen.github.io/assignPOP/index.html for more information
 # on the assignPOP package
