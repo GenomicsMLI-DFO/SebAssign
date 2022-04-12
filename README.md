@@ -7,7 +7,7 @@ __Main author:__  Audrey Bourret
 __Affiliation:__  Fisheries and Oceans Canada (DFO)   
 __Group:__        Laboratory of genomics   
 __Location:__     Maurice Lamontagne Institute  
-__Affiliated publication:__  [Senay, C., Bermingham, T., Parent, G.J., Benoît, H. P., Parent, E., Bourret, A. 2022. Identifying two Redfish species, Sebastes mentella and S. fasciatus, in fishery and surveycatches using anal fin ray count in Units 1 and 2. Can. Tech. Rep. Fish. Aquat. Sci. 3445: viii +46 p.](https://waves-vagues.dfo-mpo.gc.ca/Library/41043364.pdf)
+__Affiliated publication:__  [Senay, C., Bermingham, T., Parent, G.J., Benoît, H. P., Parent, E., Bourret, A. 2022. Identifying two Redfish species, Sebastes mentella and S. fasciatus, in fishery and surveycatches using anal fin ray count in Units 1 and 2. Can. Tech. Rep. Fish. Aquat. Sci. 3445: viii +46 p.](https://waves-vagues.dfo-mpo.gc.ca/Library/41043364.pdf) 
 __Contact:__      audrey.bourret@dfo-mpo.gc.ca
 
 - [Objective](#objective)
