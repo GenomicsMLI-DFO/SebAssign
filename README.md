@@ -2,7 +2,28 @@
 
 Pipeline developed to provide species assignment for *Sebastes mentella* and *S. fasciatus* from four microsatellite loci
 
+
+__Main author:__  Audrey Bourret    
+__Affiliation:__  Fisheries and Oceans Canada (DFO)   
+__Group:__        Laboratory of genomics   
+__Location:__     Maurice Lamontagne Institute  
+__Affiliated publication:__  [Senay, C., Bermingham, T., Parent, G.J., Benoît, H. P., Parent, E., Bourret, A. 2022. Identifying two Redfish species, Sebastes mentella and S. fasciatus, in fishery and surveycatches using anal fin ray count in Units 1 and 2. Can. Tech. Rep. Fish. Aquat. Sci. 3445: viii +46 p.](https://waves-vagues.dfo-mpo.gc.ca/Library/41043364.pdf)
+__Contact:__      audrey.bourret@dfo-mpo.gc.ca
+
+- [Objective](#objective)
+- [Status](#status)
+- [Versions](#versions)
+- [Requirements](#requirements)
+- [How to use SebAssign](#how-to-use-sebassign)
+- [Reference samples](#about-the-reference-samples)
+- [References](#references)
+
+## Objective
+
 This pipeline was developed in 2019, and make use of the `assignPOP` R package (Chen et al. 2018) alowing users to perform genetic assignment using diverse machine learning algorithms. The ultimate goal of this pipeline was to ease and standardise the genetic identification for stock management of these species. 
+
+## Status
+Completed
 
 ## Versions
 
@@ -10,7 +31,7 @@ Version 0.1.0 can be uploaded [here](https://github.com/GenomicsMLI-DFO/SebAssig
 
 Development version can be uploaded directly using the **Code** green buttom above!
 
-## How to install SebAssign
+## Requirements
 
 1. Install R and Rstudio
 
@@ -24,7 +45,7 @@ This can be done all at once with this command line in R :
 install.packages(c("assignPOP", "readxl", "dplyr", "here", "magrittr", "tidyr", "stringr", "ggplot2"))
 ```
 
-## How to use it
+## How to use SebAssign
 
 1. Open the pipeline as an Rstudio project
 
